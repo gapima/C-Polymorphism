@@ -50,10 +50,35 @@ void Cliente::mostra() {
     cout << "Salario: " << salario << endl;
 }
 
+class Conta : public Cliente {
+    private:
+        int agencia;
+        int conta;
+    public:
+        Conta(string _nome, int _idade, int _salario, int _agencia, int _conta);
+        void mostra();
+};
+
+Conta::Conta(string _nome, int _idade, int _salario, int _agencia, int _conta) : Cliente(_nome, _idade,_salario) {
+    agencia = _agencia;
+    conta = _conta;
+}
+
+
+void Conta::mostra() {
+
+    Cliente::mostra();
+
+    cout << "Mostra Conta" << endl;
+    cout << "Agencia: " << agencia << endl;
+    cout << "Conta: " << conta << endl;
+    //cout << "Salario: " << salario << endl;
+}
+
 int main ()
 {
-    Cliente cliente = Cliente("Marcelo", 33, 1000);
-    cliente.mostra();
+    Conta conta = Conta("Marcelo", 33, 100, 01, 12);
+    conta.mostra();
     //getch();
     return 0;
 }
